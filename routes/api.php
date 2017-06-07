@@ -11,6 +11,4 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    abort(403);
-});
+$app->get('read/{handler:[a-zA-Z0-9-_]+}', 'StatsController@read');
