@@ -37,6 +37,15 @@ class Disks implements Handler
         $newStructure = [];
 
         foreach ($matches as $match) {
+            if (!isset($match[1]) ||
+                !isset($match[2]) ||
+                !isset($match[3]) ||
+                !isset($match[4]) ||
+                !isset($match[5])
+            ) {
+                return false;
+            }
+
             $newStructure[] = [
                 'filesystem' => $match[1],
                 'size' => $this->removeMacSpecificDenomination($match[2]),
